@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="fi">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OddOneOut ry - Moottoripyöräharrastajien yhdistys</title>
+
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="OddOneOut ry on moottoripyöräharrastajien yhdistys, joka kokoaa yhteen kuskeja, jotka ajavat erottuakseen - eivät sulautuakseen joukkoon." />
+  <meta name="keywords" content="OddOneOut, moottoripyörä, yhdistys, harrastus, motoristit, ajoretket, tapahtumat, custom, cafe racer" />
+  <meta name="author" content="OddOneOut ry" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:title" content="OddOneOut ry - Moottoripyöräharrastajien yhdistys" />
+  <meta property="og:description" content="Liity mukaan erottuvien moottoripyöräilijöiden joukkoon. Tapahtumat, ajoretket ja yhteisö." />
+  <meta property="og:image" content="https://example.com/og-image.jpg" />
+  <meta property="og:url" content="https://example.com" />
+  <meta property="og:type" content="website" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="OddOneOut ry - Moottoripyöräharrastajien yhdistys" />
+  <meta name="twitter:description" content="Yhdistys moottoripyöräilijöille, jotka haluavat erottua joukosta." />
+  <meta name="twitter:image" content="https://example.com/og-image.jpg" />
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #111;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    header {
+      background: #222;
+      padding: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      cursor: pointer;
+    }
+
+    nav a:hover {
+      color: #f90;
+    }
+
+    .container {
+      flex: 1;
+      overflow-y: auto;
+      padding: 20px;
+    }
+
+    .centered-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    section {
+      display: none;
+      width: 100%;
+    }
+
+    section.active {
+      display: block;
+    }
+
+    footer {
+      background: #222;
+      text-align: center;
+      font-size: 14px;
+      padding: 10px;
+    }
+
+    footer .socials a {
+      margin: 0 8px;
+      color: #f90;
+      text-decoration: none;
+    }
+
+    footer .socials a:hover {
+      text-decoration: underline;
+    }
+
+    .instagram-embed-wrapper {
+      display: flex;
+      justify-content: center;
+      margin: 20px 0;
+    }
+
+    /* Responsive Image Gallery */
+    .image-gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .image-gallery img {
+      width: 100%;
+      height: auto;
+      border-radius: 6px;
+      object-fit: cover;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+
+    .image-gallery img:hover {
+      transform: scale(1.05);
+    }
+
+    /* Responsive for mobile: one image per row */
+    @media (max-width: 600px) {
+      .image-gallery {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .benefits-list {
+      list-style: none;
+      padding: 0;
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: left;
+    }
+
+    .benefits-list li {
+      background: #222;
+      margin: 10px 0;
+      padding: 12px 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 8px rgba(249, 144, 0, 0.3);
+      font-size: 1.1em;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      transition: background 0.3s ease;
+    }
+
+    .benefits-list li:hover {
+      background: #f90;
+      color: #111;
+      cursor: default;
+    }
+
+    .benefits-list li span {
+      font-size: 1.5em;
+      flex-shrink: 0;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>OddOneOut ry</h1>
+    <nav>
+      <a onclick="naytaSivu('home')">Etusivu</a>
+      <a onclick="naytaSivu('about')">Tietoa</a>
+      <a onclick="naytaSivu('contact')">Yhteystiedot</a>
+      <a onclick="naytaSivu('gallery')">Kuvagalleria</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <div class="centered-container">
+
+      <section id="home" class="active">
+        <h2>Tervetuloa OddOneOut ry:n sivuille</h2>
+        <p>Moottoripyöräharrastajien yhdistys niille, jotka ajavat erottuakseen - eivät sulautuakseen joukkoon.</p>
+
+        <!-- Instagram embed -->
+        <div class="instagram-embed-wrapper">
+          <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DL_6KXYIsgc/" data-instgrm-version="12"
+            style="background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px rgba(0,0,0,0.5),0 1px 10px rgba(0,0,0,0.15); max-width:540px; width:100%; padding:0; margin:0 auto;">
+          </blockquote>
+        </div>
+      </section>
+
+      <section id="about">
+        <h2>Meistä</h2>
+        <p>OddOneOut ry on moottoripyöräilijöiden yhteisö, joka jakaa intohimon erikoisiin pyöriin, omiin rakennelmiin ja avoimeen tiehen.
+          Yhdistys perustettiin vuonna 2025 kokoamaan yhteen kuskeja, jotka uskaltavat olla erilaisia. Järjestämme kokoontumisia, ajoretkiä ja tapahtumia ympäri vuoden.</p>
+      </section>
+
+      <section id="contact">
+        <h2>Liity jäseneksi</h2>
+        <p>Haluatko liittyä OddOneOut ry:n jäseneksi? Ota yhteyttä puheenjohtajaan tai varapuheenjohtajaan sähköpostitse, niin kerromme lisää liittymisestä ja jäseneduista.</p>
+
+        <p>Puheenjohtaja: Oskari Pekkola</p>
+        <p>Sähköposti: <a href="mailto:oskari.pekkola@oddoneoutcrew.org" style="color:#f90;">oskari.pekkola@oddoneoutcrew.org</a></p>
+        <br>
+        <p>Varapuheenjohtaja: Kalle Loikkanen</p>
+        <p>Sähköposti: <a href="mailto:kalle.loikkanen@oddoneoutcrew.org" style="color:#f90;">kalle.loikkanen@oddoneoutcrew.org</a></p>
+
+        <h3>Jäsenedut</h3>
+        <ul class="benefits-list">
+          <li><span>🏍️</span> Osallistuminen moottoripyöräilijöiden tapahtumiin ja retkille</li>
+          <li><span>🤝</span> Yhteisön tuki ja verkostoitumismahdollisuudet</li>
+          <li><span>🎁</span> Erikoistarjoukset yhteistyökumppaneilta</li>
+          <li><span>🗳️</span> Mahdollisuus vaikuttaa yhdistyksen toimintaan</li>
+        </ul>
+
+      </section>
+
+      <section id="gallery">
+        <h2>Kuvagalleria</h2>
+        <div class="image-gallery">
+          <img src="./imgs/img_1.jpg" alt="Gallery image 1" />
+          <img src="./imgs/img_2.jpg" alt="Gallery image 1" />
+          <img src="./imgs/img_3.jpg" alt="Gallery image 1" />
+          <img src="./imgs/img_4.jpg" alt="Gallery image 1" />
+          <img src="./imgs/img_5.jpg" alt="Gallery image 1" />
+          <img src="./imgs/img_6.jpg" alt="Gallery image 1" />
+          <img src="./imgs/img_7.jpg" alt="Gallery image 1" />
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <footer>
+    <div class="socials" style="margin-bottom: 8px;">
+      <a href="https://www.facebook.com/people/Oddoneout/61575972960948/" target="_blank" rel="noopener noreferrer">Facebook</a>
+      <a href="https://www.instagram.com/oddoneoutry" target="_blank" rel="noopener noreferrer">Instagram</a>
+      <a href="https://youtube.com" target="_blank" rel="noopener noreferrer">YouTube (tulossa!)</a>
+    </div>
+    &copy; 2025 OddOneOut ry - Kaikki oikeudet pidätetään
+  </footer>
+
+  <script>
+    function naytaSivu(sivuId) {
+      document.querySelectorAll("section").forEach(sec => sec.classList.remove("active"));
+      document.getElementById(sivuId).classList.add("active");
+      window.scrollTo(0, 0);
+    }
+  </script>
+
+  <!-- Instagram embed script -->
+  <script async src="https://www.instagram.com/embed.js"></script>
+
+</body>
+
+</html>
