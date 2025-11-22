@@ -25,6 +25,7 @@
   <meta name="twitter:image" content="https://oddoneoutcrew.org/imgs/logo.jpg" />
 
   <style>
+    /* Yleiset tyylit */
     body {
       margin: 0;
       font-family: Arial, sans-serif;
@@ -43,15 +44,57 @@
       align-items: center;
     }
 
+    /* Logo */
+    header h1 {
+      margin: 0;
+      font-size: 1.8em;
+    }
+
+    header h1 a.logo-link {
+      color: white;
+      text-decoration: none;
+      cursor: pointer;
+      position: relative;
+    }
+
+    header h1 a.logo-link::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      left: 0;
+      bottom: -4px;
+      background-color: #D5CA53;
+      transition: width 0.3s ease;
+    }
+
+    header h1 a.logo-link:hover::after {
+      width: 100%;
+    }
+
+    /* Navigointilinkit */
     nav a {
       color: white;
       text-decoration: none;
       margin: 0 15px;
       cursor: pointer;
+      position: relative;
+      transition: color 0.3s ease;
     }
 
-    nav a:hover {
-      color: #f90;
+    nav a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      left: 0;
+      bottom: -2px;
+      background-color: #D5CA53;
+      transition: width 0.3s ease;
+    }
+
+    nav a:hover::after {
+      width: 100%;
     }
 
     .container {
@@ -69,13 +112,17 @@
       margin: 0 auto;
     }
 
+    /* Sivujen fade-in / fade-out */
     section {
+      opacity: 0;
+      transition: opacity 0.3s ease;
       display: none;
       width: 100%;
     }
 
     section.active {
       display: block;
+      opacity: 1;
     }
 
     footer {
@@ -101,6 +148,7 @@
       margin: 20px 0;
     }
 
+    /* Kuvagalleria */
     .image-gallery {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -128,6 +176,7 @@
       }
     }
 
+    /* Jäsenedut */
     .benefits-list {
       list-style: none;
       padding: 0;
@@ -160,12 +209,13 @@
       flex-shrink: 0;
     }
   </style>
+
 </head>
 
 <body>
 
   <header>
-    <h1>OddOneOut ry</h1>
+    <h1><a onclick="naytaSivu('home')" class="logo-link">OddOneOut ry</a></h1>
     <nav>
       <a onclick="naytaSivu('home')">Etusivu</a>
       <a onclick="naytaSivu('about')">Tietoa</a>
@@ -190,28 +240,24 @@
 
       <section id="about">
         <h2>Meistä</h2>
-
         <h3>Keitä olemme?</h3>
         <p>
           OddOneOut ry on ajoneuvoharrastajien yhteisö, joka jakaa intohimon erikoisiin harrasteajoneuvoihin, omiin rakennelmiin ja avoimeen tiehen.
           Yhdistys perustettiin vuonna 2025 kokoamaan yhteen tekijöitä, jotka uskaltavat olla erilaisia. Järjestämme kokoontumisia,
           ajo- ja cruising-tapahtumia sekä yhteisiä reissuja ympäri vuoden.
         </p>
-
         <h3>Mistä kaikki alkoi?</h3>
         <p>
           OddOneOut sai alkunsa jo vuonna 2023, kun pieni kaveriporukka kaipasi omaa ajoseuraa. Kahden vuoden aikana porukka kasvoi nopeasti,
           ja nykyisin mukana on jo yli <strong>30 aktiivista harrastajaa</strong>. Virallisia jäseniä yhdistyksellä on 16, mutta laajempi tukijoukko
           ja ystäväpiiri tuo lisäväriä toimintaan.
         </p>
-
         <h3>Missä meitä tapaa?</h3>
         <p>
           Yhdistyksen kotipaikka on <strong>Mikkeli</strong>, mutta jäseniä ja kannattajia löytyy pk-seudulta aina Kuopioon asti.
           Olemme vierailleet porukalla MP-messuilla, B-illoissa ja Lahti-Vesivehmaan kiihdytysajoissa. Lisäksi järjestämme
           omia kokoontumisia, grilli-iltoja ja yhteisiä ajoreissuja, joissa tärkeintä on hyvä fiilis ja samanhenkinen seura.
         </p>
-
         <h3>Mikä meille on tärkeää?</h3>
         <p>
           Meille OddOneOut ry:ssä tärkeintä on yhdessä tekeminen ja se, että jokainen voi olla oma itsensä. Olitpa kiinnostunut
@@ -236,7 +282,6 @@
           <li><span>🎁</span> Erikoistarjoukset yhteistyökumppaneilta</li>
           <li><span>🗳️</span> Mahdollisuus vaikuttaa yhdistyksen toimintaan</li>
         </ul>
-
       </section>
 
       <section id="gallery">
@@ -266,9 +311,24 @@
 
   <script>
     function naytaSivu(sivuId) {
-      document.querySelectorAll("section").forEach(sec => sec.classList.remove("active"));
-      document.getElementById(sivuId).classList.add("active");
-      window.scrollTo(0, 0);
+      const current = document.querySelector("section.active");
+      const next = document.getElementById(sivuId);
+
+      if (current === next) return;
+
+      // Fade out nykyinen
+      current.style.opacity = 0;
+
+      setTimeout(() => {
+        current.classList.remove("active");
+        current.style.display = "none";
+
+        next.style.display = "block";
+        setTimeout(() => {
+          next.classList.add("active");
+          next.style.opacity = 1;
+        }, 50);
+      }, 300);
     }
   </script>
 
