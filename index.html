@@ -280,11 +280,11 @@
   <header>
     <h1><a onclick="naytaSivu('home')" class="logo-link">OddOneOut ry</a></h1>
     <nav>
-      <a onclick="naytaSivu('home')">Etusivu</a>
-      <a onclick="naytaSivu('rules')">Säännöt</a>
-      <a onclick="naytaSivu('about')">Tietoa</a>
-      <a onclick="naytaSivu('contact')">Yhteystiedot</a>
-      <a onclick="naytaSivu('gallery')">Kuvagalleria</a>
+      <a href="#home">Etusivu</a>
+      <a href="#rules">Säännöt</a>
+      <a href="#about">Tietoa</a>
+      <a href="#contact">Yhteystiedot</a>
+      <a href="#gallery">Kuvagalleria</a>
     </nav>
   </header>
 
@@ -493,19 +493,51 @@
       if (current === next) return;
 
       // Fade out nykyinen
-      current.style.opacity = 0;
+      if (current) {
+        current.style.opacity = 0;
+        setTimeout(() => {
+          current.classList.remove("active");
+          current.style.display = "none";
 
-      setTimeout(() => {
-        current.classList.remove("active");
-        current.style.display = "none";
-
+          // Näytä seuraava
+          if (next) {
+            next.style.display = "block";
+            setTimeout(() => {
+              next.classList.add("active");
+              next.style.opacity = 1;
+            }, 50);
+          }
+        }, 150);
+      } else if (next) {
+        // Jos ei aktiivista, näytä suoraan
         next.style.display = "block";
         setTimeout(() => {
           next.classList.add("active");
           next.style.opacity = 1;
         }, 50);
-      }, 300);
+      }
+
+      // Päivitä URL hash
+      window.location.hash = sivuId;
     }
+
+    // Näytä oikea sivu hashin perusteella, kun sivu ladataan
+    window.addEventListener("DOMContentLoaded", () => {
+      const hash = window.location.hash.substring(1); // poistaa #
+      if (hash && document.getElementById(hash)) {
+        naytaSivu(hash);
+      } else {
+        naytaSivu("home"); // oletussivu
+      }
+    });
+
+    // Kuuntele hashin muutoksia, jos käyttäjä käyttää back/forward -nappia
+    window.addEventListener("hashchange", () => {
+      const hash = window.location.hash.substring(1);
+      if (hash && document.getElementById(hash)) {
+        naytaSivu(hash);
+      }
+    });
   </script>
 
   <script async src="https://www.instagram.com/embed.js"></script>
